@@ -8,7 +8,7 @@ document.getElementById('loan-form').addEventListener('submit', function(e) {
 
 function calculateresults(e) {
     console.log("calculating");
-   
+
     const amount = document.getElementById('amount');
     const interest = document.getElementById('interest');
     const years = document.getElementById('years');
@@ -25,17 +25,28 @@ function calculateresults(e) {
         monthlypayment.value = monthly.toFixed(2);
         totalpayment.value = (monthly * calculatedpayments);
         totalinterest.value = ((monthly * calculatedpayments) - principal).toFixed(2);
-         document.getElementById('results').style.display = 'block';
-         document.getElementById('loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
+        setTimeout(erase, 5000);
+
     } else {
 
         showError('Please check your numbers');
-
+        document.getElementById('loading').style.display = 'none';
     }
     e.preventDefault();
 
 
 
+}
+
+function erase() {
+    amount.value = '';
+    interest.value = '';
+    years.value = '';
+    monthlypayment.value = '';
+    totalinterest.value = '';
+    totalpayment.value = '';
 }
 
 function showError(error) {
