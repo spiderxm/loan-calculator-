@@ -33,6 +33,7 @@ function calculateresults(e) {
 
         showError('Please check your numbers');
         document.getElementById('loading').style.display = 'none';
+
     }
     e.preventDefault();
 
@@ -57,6 +58,7 @@ function showError(error) {
     errorDiv.appendChild(document.createTextNode(error));
     card.insertBefore(errorDiv, heading);
     setTimeout(clearError, 3000);
+    setTimeout(erase, 5000);
 }
 
 function clearError() {
