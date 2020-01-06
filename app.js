@@ -2,7 +2,6 @@ document.getElementById('loan-form').addEventListener('submit', calculateresults
 
 function calculateresults(e) {
     console.log("calculating");
-    e.preventDefault();
     const amount = document.getElementById('amount');
     const interest = document.getElementById('interest');
     const years = document.getElementById('years');
@@ -21,7 +20,7 @@ function calculateresults(e) {
         totalinterest.value = ((monthly * calculatedpayments) - principal).toFixed(2);
     } else {
 
-        showError('Please check your umbers');
+        showError('Please check your numbers');
 
     }
     e.preventDefault();
