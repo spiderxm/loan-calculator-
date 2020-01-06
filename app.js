@@ -1,7 +1,14 @@
-document.getElementById('loan-form').addEventListener('submit', calculateresults);
+document.getElementById('loan-form').addEventListener('submit', function(e) {
+    //show loader
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    setTimeout(calculateresults, 2000);
+    e.preventDefault();
+});
 
 function calculateresults(e) {
     console.log("calculating");
+   
     const amount = document.getElementById('amount');
     const interest = document.getElementById('interest');
     const years = document.getElementById('years');
@@ -18,6 +25,8 @@ function calculateresults(e) {
         monthlypayment.value = monthly.toFixed(2);
         totalpayment.value = (monthly * calculatedpayments);
         totalinterest.value = ((monthly * calculatedpayments) - principal).toFixed(2);
+         document.getElementById('results').style.display = 'block';
+         document.getElementById('loading').style.display = 'none';
     } else {
 
         showError('Please check your numbers');
@@ -38,6 +47,7 @@ function showError(error) {
     card.insertBefore(errorDiv, heading);
     setTimeout(clearError, 3000);
 }
-function clearError(){
+
+function clearError() {
     document.querySelector('.alert').remove();
 }
